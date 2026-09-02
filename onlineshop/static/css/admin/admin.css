@@ -1,0 +1,52 @@
+#header {
+    background-color: #545455;
+    color: #E0D2C2;
+}
+#site-name a:visited {
+    color: #E0D2C2;
+}
+#main {
+    background-color: #7F827B;
+}
+#content h1 {
+    color: #FFF;
+}
+.filtered a{
+color: #545455;
+}
+#content a, .module, .module a {
+    color: #545455;
+}
+div.breadcrumbs, div.breadcrumbs a {
+    background-color:#E0D2C2;
+    color:#545455;
+}
+
+div.breadcrumbs a:hover {
+    color: #B02E2E;
+}
+.module caption {
+    background-color: #545455;
+    color: #E0D2C2;
+}
+
+#nav-sidebar .current-app .section:visited {
+    color: #E0D2C2;
+}
+#nav-sidebar .current-model {
+    background-color: #E0D2C2;
+}
+.toggle-nav-sidebar {
+    background-color:#7F827B;
+    color: #545455;
+}
+#content-main .object-tools .addlink {
+    color: #FFF;
+}
+
+input[type=submit].default, .submit-row input {
+    background-color: #B02E2E;
+}
+#changelist-filter-header {
+background-color: #E0D2C2;
+}
