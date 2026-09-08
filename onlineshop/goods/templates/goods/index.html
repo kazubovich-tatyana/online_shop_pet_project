@@ -1,0 +1,56 @@
+{% extends 'goods/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<a href="{% url 'show_category' 'new' %}"><h1>НОВИНКИ</h1></a>
+<div class="{{new_gallery_container}}">
+    {% for goods in new_goods %}
+    <div class="column">
+        <img class="gallery_image" alt="Новинка" src="{{ goods.photo.image.url }}">
+        <a href="#"><h3>{{goods.object.name.name}}</h3></a>
+        <h3>{{goods.object.price}}</h3>
+    </div>
+    {% endfor%}
+</div>
+<hr>
+<a href="{% url 'show_category' 'sale' %}"><h1 class="sale_h1_page">РАСПРОДАЖА</h1></a>
+<div class='{{sale_gallery_container}}'>
+    {% for goods in sale_goods %}
+    <div class="column">
+        <img class="gallery_image" alt="Распродажа" src="{{ goods.photo.image.url }}">
+        <a href="#"><h3>{{goods.object.name.name}}</h3></a>
+        <h3 class="old_price">{{goods.object.price}}</h3>
+        {% if goods.object.new_price%}
+        <h3 class="new_price">{{goods.object.new_price}}</h3>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+<hr>
+<a href="#"><h1>Женщинам</h1></a>
+<div class="{{women_gallery_container}}">
+    {% for goods in women_goods %}
+    <div class="column">
+        <img class="gallery_image" src="{{ goods.photo.image.url }}" alt="Женщинам">
+        <a href="#"><h3>{{goods.object.name.name}}</h3></a>
+        <h3>{{goods.object.price}}</h3>
+    </div>
+    {% endfor %}
+</div>
+<hr>
+<a href="#"><h1>МУЖЧИНАМ</h1></a>
+<div class="{{men_gallery_container}}">
+    {% for goods in men_goods%}
+    <div class="column">
+        <img class="gallery_image" alt="Мужчинам" src="{{ goods.photo.image.url}}">
+        <a href="#"><h3>{{goods.object.name.name}}</h3></a>
+        <h3>{{goods.object.price}}</h3>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
+

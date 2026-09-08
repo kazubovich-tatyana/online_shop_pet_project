@@ -1,0 +1,45 @@
+{% load static %}
+{% load goods_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{% static 'goods/css/style.css' %}" />
+	<title>{{ title }}</title>
+</head>
+<body>
+	<div class='grid_container'>
+		<div class='header'>
+			<div class='navbar'>
+				<div class='logo'><a href='{% url "home" %}'><img src="{% static 'goods/images/logo.png' %}"></a></div>
+				<div class='button'>
+					<a href='{% url "home" %}'><img src="{% static 'goods/images/button.png' %}"></a>
+					<div class='catalog_menu'>
+					<ul>
+						{% create_main_menu %}
+					</ul>
+					</div>
+				</div>
+				<div class='logo_name'><a href='{% url "home" %}'><img src="{% static 'goods/images/site_name.png' %}"></a></div>
+				<div class='person'><a href='#'>input | login</a></div>
+				<div class='basket'><a href='#'><img src="{% static 'goods/images/basket.png' %}"></a></div>
+			</div>
+		</div>
+
+		<div class='content'>
+			<div class='content_box'>
+				{% block content %}
+				{% endblock %}
+			</div>
+
+		</div>
+
+		<div class='footer'>
+			<div class='footer_menu'>Если вы хотите, чтобы ширина раскрывающегося содержимого была такой же широкой, как кнопка раскрывающегося списка, установите width на 100% (и overflow:auto чтобы включить прокрутку на небольших экранах). Вместо того, чтобы использовать границу, мы использовали свойство box-shadow чтобы сделать выпадающее меню похожим на "карту". Мы также используем z-индекс для размещения выпадающего списка перед другими элементами.
+			Cелектор :hover используется для отображения выпадающего меню, когда пользователь перемещает курсор мыши на кнопку раскрывающегося списка.
+			</div>
+		</div>
+	</div>
+
+</body>

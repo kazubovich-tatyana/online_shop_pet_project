@@ -1,0 +1,13 @@
+{% for category in category_dict %}
+<li class="podcats_parent_item"><a href='{% url "show_category" category.slug %}'> {{ category.name }}</a>
+    {%if category.podcats %}
+    <div class="menu_podcats">
+    <ul>
+        {% for podcat in category.podcats %}
+        <li><a href='{% url "show_category" podcat.slug %}'> {{ podcat.name }}</a></li>
+        {% endfor %}
+    </ul>
+    </div>
+</li>
+    {% endif %}
+{% endfor %}

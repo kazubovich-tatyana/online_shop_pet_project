@@ -1,0 +1,16 @@
+{% extends 'goods/base.html' %}
+{% load static %}
+
+{% block content %}
+<a href="{% url 'show_category' page_slug %}"><h1>{{page_name|upper}}</h1></a>
+<div class="{{gallery_container}}">
+    {% for obj in goods %}
+    <div class="column">
+        <img class="gallery_image" alt="{{page_name}}" src="{{ obj.photo.image.url }}">
+        <a href="#"><h3>{{obj.object.name}}</h3></a>
+        <h3>{{obj.object.price}}</h3>
+    </div>
+    {% endfor%}
+
+</div>
+{% endblock %}'''

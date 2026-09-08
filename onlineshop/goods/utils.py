@@ -38,3 +38,4 @@ class CalculateMixin:
         'men_goods': men_goods,
         'men_gallery_container': 'gallery_container_' + str(len(men_goods))})
 
+
