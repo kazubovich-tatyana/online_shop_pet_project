@@ -86,7 +86,6 @@ class GoodsCollection(models.Model):
     class Meta:
         verbose_name = 'Витрина'
         verbose_name_plural = 'Витрина'
-        ordering = ('-time_update',)
         indexes = [models.Index(fields=['time_update'])]
     def __str__(self):
         return str(self.name) + ' ' + str(self.color)
@@ -94,7 +93,7 @@ class GoodsCollection(models.Model):
 
 class ImagesGoods(models.Model):
     goods = models.ForeignKey(GoodsCollection, on_delete=models.PROTECT, verbose_name='Товар')
-    image = models.ImageField(upload_to='goods/photo', verbose_name="Фото")
+    image = models.ImageField(upload_to='goods/photo/', verbose_name="Фото")
     time_create = models.DateTimeField(auto_now_add=True)
     represent_photo = models.BooleanField(default=False, verbose_name='Карточка товара')
     class Meta:
