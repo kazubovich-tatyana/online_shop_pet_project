@@ -1,8 +1,7 @@
-from django.shortcuts import render
 from django.views.generic import ListView
 
-from .models import Goods, Categories, GoodsCollection, ImagesGoods
-from .services import GoodsFilterService
+from .models import Categories, GoodsCollection, ImagesGoods
+from goods.services.services_home_page import GoodsFilterService
 
 
 class HomePage(ListView):

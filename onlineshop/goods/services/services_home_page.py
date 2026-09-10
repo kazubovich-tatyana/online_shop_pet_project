@@ -1,4 +1,4 @@
-from .models import Goods, GoodsCollection, ImagesGoods, AbstractGoods
+from goods.models import GoodsCollection, ImagesGoods, AbstractGoods
 
 class GoodsFilterService:
     def __init__(self, **kwargs):
@@ -7,7 +7,7 @@ class GoodsFilterService:
         self.men_goods = []
         self.women_goods = []
 
-    def create_collect_dict(self,goods):
+    def _create_collect_dict(self,goods:list[dict])->list[dict]:
         collect_photo = []
         for i in goods:
             photo = ImagesGoods.objects.filter(goods__id=i.id, represent_photo=True).order_by('-time_create')
@@ -18,7 +18,7 @@ class GoodsFilterService:
             collect_goods = [{'object': obj, 'photo': photo} for obj, photo in zip(goods, collect_photo)]
         return collect_goods
 
-    def create_collect_goods(self, new_sale=True, **kwargs):
+    def _create_collect_goods(self, new_sale=True, **kwargs)->list[dict]:
         if new_sale:
             collect = GoodsCollection.objects.filter(**kwargs).values('name').distinct()[:4]
             collect = [GoodsCollection.objects.filter(name=i['name']).filter(**kwargs).order_by('-time_update')[0]
@@ -28,18 +28,18 @@ class GoodsFilterService:
             collect = [GoodsCollection.objects.filter(name__id = i.id).order_by('-time_update')[0] for i in collect]
         return collect
 
-    def get_context(self):
-        collect_new = self.create_collect_goods(new_model = True)
-        self.new_goods = self.create_collect_dict(collect_new)
+    def get_context(self)->dict:
+        collect_new = self._create_collect_goods(new_model = True)
+        self.new_goods = self._create_collect_dict(collect_new)
 
-        collect_sale = self.create_collect_goods(sale=True)
-        self.sale_goods = self.create_collect_dict(collect_sale)
+        collect_sale = self._create_collect_goods(sale=True)
+        self.sale_goods = self._create_collect_dict(collect_sale)
 
-        collect_women = self.create_collect_goods(new_sale = False, sex = 2)
-        self.women_goods = self.create_collect_dict(collect_women)
+        collect_women = self._create_collect_goods(new_sale = False, sex = 2)
+        self.women_goods = self._create_collect_dict(collect_women)
 
-        collect_men = self.create_collect_goods(new_sale = False, sex = 1)
-        self.men_goods = self.create_collect_dict(collect_men)
+        collect_men = self._create_collect_goods(new_sale = False, sex = 1)
+        self.men_goods = self._create_collect_dict(collect_men)
 
         return ({'new_goods': self.new_goods,
         'new_gallery_container':"gallery_container_" + str(len(self.new_goods)),
