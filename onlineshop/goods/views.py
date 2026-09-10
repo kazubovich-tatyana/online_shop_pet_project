@@ -2,14 +2,19 @@ from django.shortcuts import render
 from django.views.generic import ListView
 
 from .models import Goods, Categories, GoodsCollection, ImagesGoods
+from .services import GoodsFilterService
 
-from .utils import CalculateMixin, DataMixin
 
-
-class HomePage(DataMixin, CalculateMixin, ListView):
+class HomePage(ListView):
     model = GoodsCollection
     template_name = 'goods/index.html'
     title = 'Главная страница'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.title
+        goods_filter_service = GoodsFilterService()
+        context.update(goods_filter_service.get_context())
+        return context
 
 
 

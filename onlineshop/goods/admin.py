@@ -59,9 +59,10 @@ class TypeCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(ImagesGoods)
 class ImagesGoodsAdmin(admin.ModelAdmin):
-    fields = ('goods', 'image', 'show_photo')
-    list_display = ('id', 'goods', 'show_photo', 'time_create')
+    fields = ('goods', 'image','represent_photo' 'show_photo')
+    list_display = ('id', 'goods', 'show_photo', 'time_create','represent_photo')
     list_display_links = ('id', 'goods')
+    list_editable = ('represent_photo',)
     ordering = ('-goods', '-time_create',)
     list_filter = ('goods',)
     search_fields = ('goods',)

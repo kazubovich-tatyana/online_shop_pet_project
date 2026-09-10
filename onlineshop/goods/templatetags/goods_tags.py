@@ -1,6 +1,5 @@
 from django import template
-import goods.views as views
-from goods.models import ColorCategory, SexCategory, SeasonCategory, SizeCategory, TypeCategory
+from goods.models import SexCategory, SeasonCategory, TypeCategory
 
 register = template.Library()
 
