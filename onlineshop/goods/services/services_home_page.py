@@ -41,11 +41,11 @@ class GoodsFilterService:
         collect_men = self._create_collect_goods(new_sale = False, sex = 1)
         self.men_goods = self._create_collect_dict(collect_men)
 
-        return ({'new_goods': self.new_goods,
+        return {'new_goods': self.new_goods,
         'new_gallery_container':"gallery_container_" + str(len(self.new_goods)),
         'sale_goods': self.sale_goods,
         'sale_gallery_container': 'gallery_container_' + str(len(self.sale_goods)),
         'women_goods': self.women_goods,
         'women_gallery_container': 'gallery_container_' + str(len(self.women_goods)),
         'men_goods': self.men_goods,
-        'men_gallery_container': 'gallery_container_' + str(len(self.men_goods))})
+        'men_gallery_container': 'gallery_container_' + str(len(self.men_goods))}
