@@ -8,7 +8,12 @@
     <div class="column">
         <img class="gallery_image" alt="{{page_name}}" src="{{ obj.photo.image.url }}">
         <a href="#"><h3>{{obj.object.name}}</h3></a>
-        <h3>{{obj.object.price}}</h3>
+        {% if obj.object.new_price%}
+            <h3 class="old_price">{{obj.object.price}}</h3>
+            <h3 class="new_price">{{obj.object.new_price}}</h3>
+        {% else %}
+            <h3>{{obj.object.price}}</h3>
+        {% endif %}
     </div>
     {% endfor%}
 
