@@ -36,8 +36,43 @@
 		</div>
 
 		<div class='footer'>
-			<div class='footer_menu'>Если вы хотите, чтобы ширина раскрывающегося содержимого была такой же широкой, как кнопка раскрывающегося списка, установите width на 100% (и overflow:auto чтобы включить прокрутку на небольших экранах). Вместо того, чтобы использовать границу, мы использовали свойство box-shadow чтобы сделать выпадающее меню похожим на "карту". Мы также используем z-индекс для размещения выпадающего списка перед другими элементами.
-			Cелектор :hover используется для отображения выпадающего меню, когда пользователь перемещает курсор мыши на кнопку раскрывающегося списка.
+			<div class='footer_menu'>
+				<div class='logo_name'>
+					<a href='{% url "home" %}'><img src="{% static 'goods/images/logo.png' %}"></a>
+					<a href='{% url "home" %}'><img src="{% static 'goods/images/site_name_footer.png' %}"></a>
+				</div>
+				<div class="footer_links_container">
+					<div class="headline"><h2>Категории</h2></div>
+					{% get_category_dict as category %}
+					<div class="footer_context">
+						<ul>
+							{% for cat in category %}
+							<li class="footer_links"><a href="{% url 'show_category' cat.slug %}">{{cat.name}}</a></li>
+							{% endfor%}
+							</ul>
+					</div>
+				</div>
+				<div class="footer_links_container">
+					<div class="headline"><h2>Информация</h2></div>
+					<div class="footer_context">
+						{% get_secondary_footer_menu as inf_cat %}
+						<ul>
+							{% for i in inf_cat %}
+							<li class="footer_links"><a href="#">{{i.name}}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+				<div class="footer_links_container">
+					<div class="headline"><h2> С нами можно связаться </h2></div>
+					<div class="footer_context">
+						<a href ='https://msng.link/o?375296491208=vi' target="_blank" rel="noopener noreferrer"><img src = "{% static 'goods/images/viber.png' %}"></a>
+						<a href ='https://msng.link/o?@kazubovich=tg' target="_blank" rel="noopener noreferrer"><img src = "{% static 'goods/images/telegram.png' %}"></a>
+						<a href ='https://instagram.com' target="_blank" rel="noopener noreferrer"><img src = "{% static 'goods/images/instagram.png' %}"></a>
+						<a href ='#'><img src = "{% static 'goods/images/mail.png' %}"></a>
+					</div>
+
+				</div>
 			</div>
 		</div>
 	</div>

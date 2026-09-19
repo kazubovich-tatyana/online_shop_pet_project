@@ -151,7 +151,6 @@ a h1 {
     color: #B02E2E;
 }
 
-}
 .footer {
 	background-color: #7F827B;
 	min-width: 100vh;
@@ -159,8 +158,43 @@ a h1 {
 	padding-right: 30px;
 }
 .footer_menu {
+    display: grid;
+	grid-template-columns: 15% auto auto 30% ;
+	gap: 30px;
+	margin-top: 1%;
+	padding: 20px;
 	background-color: #545455;
 	color: #E0D2C2;
 	margin-bottom: 1%;
-	padding: 20px;
+}
+.footer_menu div {
+    text-align: center;
+}
+.footer_menu div ul {
+    padding-left: 0px;
+}
+ul .footer_links {
+    list-style-type: none;
+    padding-bottom:5px;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+.footer_menu .logo_name {
+    text-align: center;
+}
+.footer_menu .logo_name a {
+    display: inline-block;
+    place-items: center;
+
+}
+.footer_links_container {
+    display: grid;
+    grid-template-rows: 30% 1fr ;
+	gap: 5px;
+	padding: 0px;
+	margin: 0px;
+
+}
+.footer_context img {
+    width: 30px;
 }
